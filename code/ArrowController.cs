@@ -10,7 +10,7 @@ public class ArrowController : MonoBehaviour{
     }
     void Update(){
         // 每個影格等速往下移動
-        transform.Translate(0,-0.1f,0);
+        transform.Translate(0,-0.06f,0);
 
         // 當箭頭超出遊戲畫面捨棄物件
         if(transform.position.y < -5.0f){
@@ -26,6 +26,9 @@ public class ArrowController : MonoBehaviour{
         float r2 = 1.0f; // 遊戲角色的圓半徑
 
         if(d < r1 + r2){
+
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
             // 發生衝突時就捨棄箭頭
             Destroy(gameObject);
         }
